@@ -42,9 +42,11 @@ h3 {
 }
 
 .brand {
-  font-family: "Barriecito";
+  font-family: "Barriecito" !important;
   font-size: 2em !important;
   padding: 0 5%;
+  letter-spacing: 4px;
+
 }
 
 .nav-item {
@@ -109,6 +111,17 @@ h3 {
 
 .home-form .form-control:focus {
   z-index: 3;
+}
+
+.id .form-control:focus, input[type="text"]:focus{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    outline: none !important;
+    background:none;
+}
+
+.help-block {
+    color:rgb(40, 39, 48)
 }
 
 .top {
@@ -214,6 +227,7 @@ h3 {
     border-bottom: 2px solid rgba(144, 172, 233, 0.808);
     background-color: transparent;
     border-radius: 0;
+    margin-bottom: 1%;
 }
 
 .rec-card {

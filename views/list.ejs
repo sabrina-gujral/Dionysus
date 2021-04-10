@@ -24,14 +24,15 @@
 <div class="content">
 <div class="container intro">
     <h3 class="intro-heading" href=""> Hello, <%= name %></h3>
-    <h5 class="intro-id ">UserId: <%= userId %></h5>
-    <p class="intro-text">Here's what Dionysus does. It is a movie recommendation system that uses a MovieAPI and recommends movies based 
+    <h5 class="intro-id ">UserId: <%= userId %></h5> <br>
+    <p class="intro-text">Dionysus is a movie recommendation system that uses a MovieAPI and recommends movies based 
         on the data it has been trained on. The website is a presentation of those recommendations in addition to 
         a content-based recommendation system. You, the anonymous, can check recommendations for 600 other users who have rated
         the movies in our dataset by entering any random userId. 
     </p>
     <form action="" method="POST">
-        <input type="text" name="userid" class="form-control id" placeholder="UserId" autocomplete="false">
+        <input type="text" name="userid" class="id form-control" placeholder="UserId" autocomplete="off">
+        <span class="help-block">Enter any random userId between 0 and 610 or else land on 404</span>
         <button type="submit" style="display: none;"></button>
     </form>
 </div>
