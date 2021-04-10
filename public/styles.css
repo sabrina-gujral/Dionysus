@@ -17,7 +17,7 @@ h3 {
 .navbar {
   height: 4rem;
   padding: 0;
-  /* background-image: linear-gradient(to right, rgba(37, 50, 80, 0.808), rgba(61, 70, 90, 0.808)); */
+  background-image: linear-gradient(rgb(3, 1, 24), rgb(0, 0, 0));
 }
 
 .nav-link {
@@ -46,7 +46,6 @@ h3 {
   font-size: 2em !important;
   padding: 0 5%;
   letter-spacing: 4px;
-
 }
 
 .nav-item {
@@ -79,12 +78,12 @@ h3 {
 }
 
 .main {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .mySlides {
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 
 .home-form {
@@ -113,15 +112,16 @@ h3 {
   z-index: 3;
 }
 
-.id .form-control:focus, input[type="text"]:focus{
-    box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    outline: none !important;
-    background:none;
+.id .form-control:focus,
+input[type="text"]:focus {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  outline: none !important;
+  background: none;
 }
 
 .help-block {
-    color:rgb(40, 39, 48)
+  color: rgb(40, 39, 48);
 }
 
 .top {
@@ -179,109 +179,116 @@ h3 {
 }
 
 .intro {
-    height: auto;
-    margin: 0 auto;
-    width: 80%;
-    padding: 2% 0;
+  height: auto;
+  margin: 0 auto;
+  width: 80%;
+  padding: 2% 0;
 }
 
 .intro-heading {
-        position: relative;
-        font-family: sans-serif;
-        text-transform: uppercase;
-        font-size: 2em;
-        letter-spacing: 4px;
-        overflow: hidden;
-        background: linear-gradient(90deg, rgb(255, 255, 255), #fff, #000);
-        background-repeat: no-repeat;
-        background-size: 80%;
-        animation: animate 5s linear;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: rgba(255, 255, 255, 0);
-      }
-      
-      @keyframes animate {
-        0% {
-          background-position: -500%;
-        }
-        100% {
-          background-position: 500%;
-        }
-      }
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgb(255, 255, 255), #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 5s linear;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
 .intro-text {
-    color: white;
+  color: white;
 }
 
 .intro-id {
-    color:rgba(144, 172, 233, 0.808);
+  color: rgba(144, 172, 233, 0.808);
 }
 
 .wrapper {
-    text-align: center;
+  text-align: center;
 }
 
 .id {
-    width: 25rem;
-    margin: 2% 0;
-    border: 0;
-    border-bottom: 2px solid rgba(144, 172, 233, 0.808);
-    background-color: transparent;
-    border-radius: 0;
-    margin-bottom: 1%;
+  width: 25rem;
+  margin: 2% 0;
+  border: 0;
+  border-bottom: 2px solid rgba(144, 172, 233, 0.808);
+  background-color: transparent;
+  border-radius: 0;
+  margin-bottom: 1%;
 }
 
 .rec-card {
-    width: 100%;
-    padding: 1% 1% 15% 1%;
+  width: 100%;
+  padding: 1% 1% 15% 1%;
 }
 
 .rec-img-div {
-    margin: 5px auto;
+  margin: 5px auto;
 }
 
 .rec-img {
-    height: 15rem;
-    width: 10rem;
+  height: 15rem;
+  width: 10rem;
 }
 
 .rec-title {
-    color:rgb(253, 253, 253);
-    font-family: fuchet;
-    letter-spacing: 2px;
-    margin-top: 8px;
+  color: rgb(253, 253, 253);
+  font-family: fuchet;
+  letter-spacing: 2px;
+  margin-top: 8px;
 }
 
 hr {
-    border-color:rgb(253, 253, 253) !important;
-    margin: 5px auto;
-    width: 80%;
-
+  border-color: rgb(253, 253, 253) !important;
+  margin: 5px auto;
+  width: 80%;
 }
 
-.rec-genres{
-    color: white;
-    font-family: fuchet;
-    letter-spacing: 2px;
+.rec-genres {
+  color: white;
+  font-family: fuchet;
+  letter-spacing: 2px;
 }
 
 .link {
-    float: right;
-    color: white;
+  float: right;
+  color: white;
 }
 
 footer {
-    text-align: center;
-    margin-bottom: 20px;
-    word-spacing: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  word-spacing: 10px;
 }
 
 footer i {
-    color: rgba(144, 172, 233, 0.808);
+  color: rgba(144, 172, 233, 0.808);
 }
 
 .footer {
-    font-size: 12px;
-    letter-spacing: 2px;
-    margin: 0 auto;
-    word-spacing: 5px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin: 0 auto;
+  word-spacing: 5px;
+}
+
+.filter {
+  color: rgba(144, 172, 233, 0.808);
+  float: right;
+  margin-right: 10%;
+  margin-top: 10%;
+  letter-spacing: 2px;
 }

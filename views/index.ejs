@@ -1,22 +1,37 @@
 <%- include("header"); -%>
 <div class="main">
-    <div id="overlay"></div>
-    <div class="main">
-    <img class="mySlides" src="https://wallpapercave.com/wp/wp1945898.jpg">
-    <img class="mySlides" src="https://i.redd.it/4fxxbm4opjd31.jpg">
+  <div id="overlay"></div>
+  <div class="main">
+    <img class="mySlides" src="https://wallpapercave.com/wp/wp1945898.jpg" />
+    <img class="mySlides" src="https://i.redd.it/4fxxbm4opjd31.jpg" />
     <div class="container top-layer">
-        <div class="neons">
+      <div class="neons">
         <h1 class="heading"><i class="fa fa-ravelry"></i>&nbsp; Dionysus</h1>
+      </div>
+      <form class="home-form" action="/" method="POST">
+        <input
+          type="text"
+          name="name"
+          class="form-control top mt-4"
+          placeholder="Username"
+          autofocus=""
+        />
+        <input
+          type="text"
+          name="userid"
+          class="form-control middle"
+          placeholder="UserId"
+        />
+        <br />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Recommend
+        </button>
+        <br />
+        <small class="footer mt-5 mb-5 text-muted"
+          >&copy;2021 chilling_adventures</small
+        >
+      </form>
     </div>
-        <form class="home-form" action="/" method="POST">
-            <input type="text" name="name" class="form-control top mt-4" placeholder="Username" autofocus="">
-            <input type="text" name="userid" class="form-control middle" placeholder="UserId">
-            <br>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Recommend</button>
-            <br>
-            <small class="footer mt-5 mb-5 text-muted">&copy;2021 chilling_adventures</small>
-          </form>
-        </div>
-    </div>
+  </div>
 </div>
 <%- include("footer"); -%>
