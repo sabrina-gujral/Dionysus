@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
+const querystring = require("querystring");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -44,9 +45,11 @@ app.post("/", function (req, res) {
   }
 });
 
-app.get("/rec/:userId/:name", function (req, res) {
+app.get("/rec/:userId/:name/:filters?", function (req, res) {
   const userId = req.params.userId;
   const name = req.params.name;
+  const filters = req.query.filter;
+
   const url = "https://still-dusk-52410.herokuapp.com/movies/" + userId + "/re";
 
   https.get(url, function (response) {
@@ -60,9 +63,21 @@ app.get("/rec/:userId/:name", function (req, res) {
     });
 
     response.on("end", function () {
-      const movieRec = JSON.parse(data);
+      let movieRec = JSON.parse(data);
       const genres = [];
       movieRec.forEach((i) => genres.push(i.genres.split("|")));
+
+      if (typeof filters === "undefined") {
+        movieRec = movieRec;
+      } else {
+        const recs = [];
+        filters.forEach(function (filter) {
+          movieRec.forEach((rec) =>
+            rec.genres.includes(filter) ? recs.push(rec) : null
+          );
+        });
+        movieRec = recs;
+      }
       res.render("list", {
         rec: movieRec,
         name: name,
@@ -73,14 +88,15 @@ app.get("/rec/:userId/:name", function (req, res) {
   });
 });
 
-app.post("/rec/:userId/:name", function (req, res) {
+app.post("/rec/:userId/:name/:filters?", function (req, res) {
   const name = req.params.name;
   const newId = req.body.userid;
+  const filters = req.body.filter;
 
   if (newId < 0 || newId > 610) {
     res.render("404");
   } else {
-    res.redirect("/rec/" + newId + "/" + name);
+    res.redirect("/rec/" + newId + "/" + name + "/" + filters);
   }
 });
 
