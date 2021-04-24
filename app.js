@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
-const querystring = require("querystring");
+const spawn = require("child_process").spawn;
 const app = express();
 
 app.set("view engine", "ejs");
@@ -45,10 +45,11 @@ app.post("/", function (req, res) {
   }
 });
 
-app.get("/rec/:userId/:name/:filters?", function (req, res) {
+app.get("/rec/:userId/:name/:filters?/:title?", function (req, res) {
   const userId = req.params.userId;
   const name = req.params.name;
   const filters = req.query.filter;
+  const title = req.query.title;
 
   const url = "https://still-dusk-52410.herokuapp.com/movies/" + userId + "/re";
 
@@ -70,13 +71,13 @@ app.get("/rec/:userId/:name/:filters?", function (req, res) {
       if (typeof filters === "undefined") {
         movieRec = movieRec;
       } else {
-        const recs = [];
+        const movs = [];
         filters.forEach(function (filter) {
           movieRec.forEach((rec) =>
-            rec.genres.includes(filter) ? recs.push(rec) : null
+            rec.genres.includes(filter) ? movs.push(rec) : null
           );
         });
-        movieRec = recs;
+        movieRec = movs;
       }
       res.render("list", {
         rec: movieRec,
@@ -88,7 +89,7 @@ app.get("/rec/:userId/:name/:filters?", function (req, res) {
   });
 });
 
-app.post("/rec/:userId/:name/:filters?", function (req, res) {
+app.post("/rec/:userId/:name/:filters?/:title?", function (req, res) {
   const name = req.params.name;
   const newId = req.body.userid;
   const filters = req.body.filter;
@@ -98,6 +99,41 @@ app.post("/rec/:userId/:name/:filters?", function (req, res) {
   } else {
     res.redirect("/rec/" + newId + "/" + name + "/" + filters);
   }
+});
+
+app.get("/:title", function (req, res) {
+  const title = req.params.title;
+  const pythonProcess = spawn("python", ["./recommender/recommend.py", title]);
+
+  var dataStr = "";
+
+  pythonProcess.stdout.on("data", (data) => {
+    dataStr += data.toString();
+  });
+
+  pythonProcess.stderr.on("data", (data) => {
+    console.log(data.toString());
+  });
+
+  pythonProcess.on("exit", (code) => {
+    console.log("Process quit with code : " + code);
+
+    const recommendations = JSON.parse(dataStr);
+
+    const titles = Object.values(recommendations.title);
+    const urls = Object.values(recommendations.movie_url);
+    const posters = Object.values(recommendations.poster);
+    const genres = Object.values(recommendations.genres);
+    const director = Object.values(recommendations.director);
+
+    res.render("content", {
+      title: titles,
+      urls: urls,
+      posters: posters,
+      genres: genres,
+      director: director,
+    });
+  });
 });
 
 app.listen(process.env.PORT || 3000, function () {
