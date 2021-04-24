@@ -1,42 +1,5 @@
 <%- include("header"); -%>
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-  <a class="navbar-brand brand" href="#"
-    ><i class="fa fa-ravelry"></i> Dionysus</a
-  >
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#collapse_content"
-    aria-controls="collapse_content"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapse_content">
-    <ul class="navbar-nav ml-auto right-items">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Home <span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://still-dusk-52410.herokuapp.com/"
-          >API</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="https://github.com/sabrina-gujral/Dionysus"
-          >GitHub</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#footer">Contact</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+
 <div class="content">
   <div class="container intro">
     <h3 class="intro-heading" href="">Hello, <%= name %></h3>
@@ -106,24 +69,33 @@
   </div>
   <div class="container">
     <div class="row">
+    
       <% rec.forEach(function(i){ %>
       <div class="col-md-3 wrapper">
+        <input type="text" name="title" value="<%= i.title %>" hidden>
         <div id="<%= 'movie' + i %>" class="rec-card">
           <div class="rec-img-div">
-            <a href="<%= i.movie_url %>"
+            <a href="/<%= i.title %>"
               ><img class="rec-img" src="<%= i.poster %>" alt="poster"
             /></a>
             <a href="<%= i.movie_url %>"><i class="fa fa-link link"></i></a>
           </div>
-          <small class="rec-title"><%= i.title %></small>
+          <small class="rec-title" name="" ><%= i.title %></small>
           <hr />
           <small class="rec-genres"><%= i.genres %> </small>
         </div>
       </div>
       <br />
       <% })%>
+    
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('.content-form')
+  })
+</script>
 
 <%- include("footer"); -%>
