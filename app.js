@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
+const spawn = require("child_process").spawn;
 const app = express();
 
 app.set("view engine", "ejs");
@@ -101,8 +102,6 @@ app.post("/rec/:userId/:name/:filters?/:title?", function (req, res) {
 });
 
 app.get("/:title", function (req, res) {
-  const spawn = require("child_process").spawn;
-
   const title = req.params.title;
   const pythonProcess = spawn("python", ["./recommender/recommend.py", title]);
 
