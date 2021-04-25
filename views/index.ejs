@@ -1,4 +1,4 @@
-<%- include("header"); -%>
+<%- include("partials/header"); -%>
 <div class="main">
   <div id="overlay"></div>
   <div class="main">
@@ -7,7 +7,7 @@
     <div class="container top-layer">
       <div class="container neons">
         <span class="heading">
-          <i class="fa fa-ravelry"></i>&nbsp; Dionysus
+          <img src="icon/brand_icon.svg" class="brand-icon" alt="brand"></i>&nbsp; Dionysus
         </span>
       </div>
       <form class="home-form" action="/" method="POST">
@@ -21,7 +21,7 @@
           required
         />
         <input
-          type="text"
+          type="number"
           name="userid"
           class="form-control middle"
           placeholder="UserId (within range 0 - 610)"
@@ -42,6 +42,11 @@
           Recommend
         </button>
         <br />
+        <p class="intro-text home-page-links nav-item mt-3">
+          <a href="https://still-dusk-52410.herokuapp.com/"><span class="mr-5">API</span></a>&nbsp;
+          <a href="https://github.com/sabrina-gujral/Dionysus"><span class="mr-5">GitHub</span></a>
+          <span><a href="https://linkedin.com/in/sabrina2616"></i> linkedin</a></span>
+        </p>
         <small class="footer mt-5 mb-5 text-muted"
           >&copy;2021 chilling_adventures</small
         >
@@ -49,4 +54,4 @@
     </div>
   </div>
 </div>
-<%- include("footer"); -%>
+<%- include("partials/footer"); -%>

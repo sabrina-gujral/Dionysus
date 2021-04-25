@@ -127,6 +127,7 @@ app.get("/:title", function (req, res) {
     const director = Object.values(recommendations.director);
 
     res.render("content", {
+      movie: title,
       title: titles,
       urls: urls,
       posters: posters,

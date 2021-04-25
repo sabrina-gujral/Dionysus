@@ -1,8 +1,8 @@
-<%- include("header"); -%>
-
+<%- include("partials/header"); -%>
+<%- include("partials/nav"); -%>
 <div class="content">
   <div class="container intro">
-    <h3 class="intro-heading" href="">Hello, <%= name %></h3>
+    <h3 class="intro-heading">Hello, <%= name %></h3>
     <h5 class="intro-id">UserId: <%= userId %></h5>
     <br />
     <p class="intro-text">
@@ -51,7 +51,7 @@
                     type="checkbox"
                     name="filter"
                     value="<%= g %>"
-                    id="<%= g %>"
+                    id="<%= g + 'box' %>"
                   />
                   <label class="form-check-label" for="flexCheckDefault">
                     <%= g %>
@@ -98,4 +98,4 @@
   })
 </script>
 
-<%- include("footer"); -%>
+<%- include("partials/footer"); -%>
