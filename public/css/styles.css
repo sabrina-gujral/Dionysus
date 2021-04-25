@@ -225,8 +225,12 @@ input[type="text"] .form-control {
   color: white;
 }
 
-.intro-id {
+.intro-id, .intro-id-rec {
   color: rgba(144, 172, 233, 0.808);
+}
+
+.intro-id-rec {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
 }
 
 .wrapper {

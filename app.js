@@ -48,8 +48,7 @@ app.post("/", function (req, res) {
 app.get("/rec/:userId/:name/:filters?/:title?", function (req, res) {
   const userId = req.params.userId;
   const name = req.params.name;
-  const filters = req.query.filter;
-  const title = req.query.title;
+  let filters = req.query.filter;
 
   const url = "https://still-dusk-52410.herokuapp.com/movies/" + userId + "/re";
 
@@ -70,6 +69,8 @@ app.get("/rec/:userId/:name/:filters?/:title?", function (req, res) {
 
       if (typeof filters === "undefined") {
         movieRec = movieRec;
+      } else if (typeof filters === "string") {
+        filters = [filters];
       } else {
         const movs = [];
         filters.forEach(function (filter) {
@@ -89,7 +90,7 @@ app.get("/rec/:userId/:name/:filters?/:title?", function (req, res) {
   });
 });
 
-app.post("/rec/:userId/:name/:filters?/:title?", function (req, res) {
+app.post("/rec/:userId/:name/:filters?/", function (req, res) {
   const name = req.params.name;
   const newId = req.body.userid;
   const filters = req.body.filter;
