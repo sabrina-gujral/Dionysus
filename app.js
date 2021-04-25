@@ -71,7 +71,12 @@ app.get("/rec/:userId/:name/:filters?/:title?", function (req, res) {
         movieRec = movieRec;
       } else if (typeof filters === "string") {
         filters = [filters];
+        filterMovies(filters);
       } else {
+        movieRec(filters);
+      }
+
+      function filterMovies(filters) {
         const movs = [];
         filters.forEach(function (filter) {
           movieRec.forEach((rec) =>
@@ -79,7 +84,10 @@ app.get("/rec/:userId/:name/:filters?/:title?", function (req, res) {
           );
         });
         movieRec = movs;
+
+        return movieRec;
       }
+      
       res.render("list", {
         rec: movieRec,
         name: name,
