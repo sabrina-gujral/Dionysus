@@ -1,12 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const https = require("https");
+const timeout = require('connect-timeout');
 const spawn = require("child_process").spawn;
 const app = express();
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
+app.use(timeout('10s'));
 
 app.get("/", function (req, res) {
   res.render("index");
@@ -135,10 +137,14 @@ app.get("/:title", function (req, res) {
     const genres = Object.values(recommendations.genres);
     const director = Object.values(recommendations.director);
 
-    const usedMem = process.memoryUsage().heapUsed / 1024 / 1024;
-    console.log(
-      'The script uses approximately ${Math.round(usedMem * 100) / 100} MB'
-    );
+    const mem = process.memoryUsage();
+    for(let key in mem) {
+      console.log(
+        `${key}: ${Math.round(mem[key] /1024 / 1024 * 100) / 100} MB`
+      );
+    }
+
+    if(req.timedout) return;
 
     res.render("content", {
       movie: title,
