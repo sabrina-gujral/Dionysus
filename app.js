@@ -87,7 +87,7 @@ app.get("/rec/:userId/:name/:filters?/:title?", function (req, res) {
 
         return movieRec;
       }
-      
+
       res.render("list", {
         rec: movieRec,
         name: name,
@@ -134,6 +134,11 @@ app.get("/:title", function (req, res) {
     const posters = Object.values(recommendations.poster);
     const genres = Object.values(recommendations.genres);
     const director = Object.values(recommendations.director);
+
+    const usedMem = process.memoryUsage().heapUsed / 1024 / 1024;
+    console.log(
+      'The script uses approximately ${Math.round(usedMem * 100) / 100} MB'
+    );
 
     res.render("content", {
       movie: title,
