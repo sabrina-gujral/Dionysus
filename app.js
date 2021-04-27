@@ -14,6 +14,7 @@ app.get("/", function (req, res) {
   res.render("index");
 });
 
+
 const genresList = [
   "Animation",
   "Children",
@@ -122,7 +123,8 @@ app.get("/:title", function (req, res) {
     dataStr += data.toString();
   });
 
-  pythonProcess.stderr.on("data", (data) => {
+  pythonProcess.stderr.on("data", (data, err) => {
+    console.log(err);
     console.log(data.toString());
   });
 
