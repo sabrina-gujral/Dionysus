@@ -28,13 +28,11 @@ def movie_recommend(title):
 
     movie_indices = [i[0] for i in sim_scores]
 
-    print(movie_title.iloc[movie_indices].to_json())
     return movie_title.iloc[movie_indices].to_json()
 
 
 def main():
     movie_recommend(sys.argv[1])
-    sys.stdout.flush()
 
 if __name__ == '__main__':
     main()
