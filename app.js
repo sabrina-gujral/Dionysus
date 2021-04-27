@@ -8,7 +8,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
-app.use(timeout('10s'));
+app.use(timeout('30s'));
 
 app.get("/", function (req, res) {
   res.render("index");
@@ -76,7 +76,7 @@ app.get("/rec/:userId/:name/:filters?/:title?", function (req, res) {
         filters = [filters];
         filterMovies(filters);
       } else {
-        movieRec(filters);
+        filterMovies(filters);
       }
 
       function filterMovies(filters) {
@@ -132,6 +132,7 @@ app.get("/:title", function (req, res) {
     console.log("Process quit with code : " + code);
 
     const recommendations = JSON.parse(dataStr);
+    console.log(Object.values(recommendations.title));
 
     const titles = Object.values(recommendations.title);
     const urls = Object.values(recommendations.movie_url);
