@@ -31,8 +31,10 @@ def movie_recommend(title):
     return movie_title.iloc[movie_indices].to_json()
 
 
+
 def main():
     movie_recommend(sys.argv[1])
+    sys.stdout.flush()
 
 if __name__ == '__main__':
     main()
